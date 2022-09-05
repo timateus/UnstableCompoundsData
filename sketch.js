@@ -14,8 +14,11 @@ let modFreq1;
 let modFreq2;
 let amp1;
 let amp2;
+let amp3;
 
 const vals = [];
+
+let vid;
 
 
 const oscImg = 'osc2.png'
@@ -35,6 +38,16 @@ function setup() {
   createCanvas(800, 800);
   
   imgMap.loadPixels();
+  
+  
+  vid = createVideo(['vid.mov']);
+  vid.loop();
+  vid.hide();
+}
+
+
+function mousePressed() {
+  vid.loop(); // set the video to loop and start playing
 }
 
 const renderOscilloscope = () => {
@@ -50,10 +63,12 @@ const renderScreen = () => {
 
   const vals = calcWave(sin, modFreq, amp1);
   const valsCos = calcWave(cos, modFreq2, amp2);
+  const valsCos1 = calcWave(cos, modFreq, amp2 / 5);
   renderWave(vals, 8);
   renderWave(valsCos, 8);
+  renderWave(valsCos1, 8);
   push()
-  translate(-300,0)
+  translate(-0,0)
   renderWaveParametric(vals, valsCos, 8);  
   pop()
   // renderWaveParametric(vals, valsCos);  
@@ -62,10 +77,10 @@ const renderScreen = () => {
 
 const renderTarget = () => {
   let x = map(
-    noise(frameCount * 0.0005), 0, 1, 100, 1000
+    noise(frameCount * 0.002), 0, 1, 100, 700
   );
   let y = map(
-    noise(frameCount * 0.0004), 0, 1, 100, 600
+    noise(frameCount * 0.001), 0, 1, 100, 700
   );
   
   
@@ -86,7 +101,7 @@ const renderTarget = () => {
   
   
   
-  imgPlane.resize(50, 0);
+  imgPlane.resize(30, 0);
   image(imgPlane, x -25, y - 25);
 
   // ellipse(x, y, 10, 10);
@@ -98,10 +113,12 @@ function draw() {
   
   background(0)
   push()
-  scale(0.70)
-  image(imgMap, 90, 90);
+  scale(0.43)
+  image(imgMap, 70, 300);
   pop()
   
+  
+  push()
   let tarVals = renderTarget();
   // console.log(tarVals[0])
   // console.log(imgMap.pixels[4 * tarVals[0]])
@@ -112,17 +129,24 @@ function draw() {
   // amp2 = map(resVal2, 0, 255, 10, 300);
   // console.log(amp1, amp2)
   // angularSpeed = map(resVal2, 0, 255, 0.001, 0.1)
+  pop()
   
   push()
-  translate(width * 0.665, 60 )
-  scale(0.5)
+  translate(width * 0.5, 150 )
+  scale(0.25)
   renderOscilloscope()
   pop()
 
   push()
-  translate(width * 0.7, 70 )
-  scale(0.2)
+  translate(width * 0.51, 140 )
+  scale(0.13)
   renderScreen()
+  pop()
+  
+  push()
+  translate(width * 0.82, 140)
+  scale(0.2)
+  image(vid, 0, 0);
   pop()
   
 
