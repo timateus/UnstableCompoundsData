@@ -35,7 +35,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(1920, 2160);
   
   imgMap.loadPixels();
   
@@ -113,8 +113,8 @@ function draw() {
   
   background(0)
   push()
-  scale(0.43)
-  image(imgMap, 70, 300);
+  scale(1)
+  image(imgMap, 80, 400);
   pop()
   
   
@@ -132,20 +132,20 @@ function draw() {
   pop()
   
   push()
-  translate(width * 0.5, 150 )
-  scale(0.25)
+  translate(width * 0.55, height * 0.2 )
+  scale(0.5)
   renderOscilloscope()
   pop()
 
   push()
-  translate(width * 0.51, 140 )
-  scale(0.13)
+  translate(width * 0.57, height * 0.14 )
+  scale(0.2)
   renderScreen()
   pop()
   
   push()
-  translate(width * 0.82, 140)
-  scale(0.2)
+  translate(width * 0.82, height * 0.2)
+  scale(0.4)
   image(vid, 0, 0);
   pop()
   
