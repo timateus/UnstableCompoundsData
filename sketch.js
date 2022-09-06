@@ -40,15 +40,15 @@ function setup() {
   imgMap.loadPixels();
   
   
-  vid = createVideo(['vid.mov']);
-  vid.loop();
-  vid.hide();
+  // vid = createVideo(['vid.mov']);
+  // vid.loop();
+  // vid.hide();
 }
 
 
-function mousePressed() {
-  vid.loop(); // set the video to loop and start playing
-}
+// function mousePressed() {
+//   vid.loop(); // set the video to loop and start playing
+// }
 
 const renderOscilloscope = () => {
   image(img, -45, -262);
@@ -132,13 +132,13 @@ function draw() {
   pop()
   
   push()
-  translate(width * 0.62, height * 0.25 )
+  translate(100, 100 )
   scale(0.5)
   renderOscilloscope()
   pop()
 
   push()
-  translate(width * 0.64, height * 0.2 )
+  translate(130, 0 )
   scale(0.23)
   renderScreen()
   pop()
