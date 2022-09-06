@@ -35,7 +35,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1500, 1700);
+  createCanvas(1500, 1600);
   
   imgMap.loadPixels();
   
@@ -109,10 +109,9 @@ const renderTarget = () => {
 }
 
 function draw() {
-  scale()
   noiseVal = map(noise(frameCount / 100),0, 1, -50, 50);
   
-  background(0)
+  background(255)
   push()
   scale(0.8)
   image(imgMap, 70, 450);
@@ -133,22 +132,22 @@ function draw() {
   pop()
   
   push()
-  translate(width * 0.55, height * 0.2 )
+  translate(width * 0.55, height * 0.3 )
   scale(0.5)
   renderOscilloscope()
   pop()
 
   push()
-  translate(width * 0.57, height * 0.14 )
-  scale(0.2)
+  translate(width * 0.57, height * 0.24 )
+  scale(0.23)
   renderScreen()
   pop()
   
-  push()
-  translate(width * 0.82, height * 0.2)
-  scale(0.4)
-  image(vid, 0, 0);
-  pop()
+  // push()
+  // translate(width * 0.82, height * 0.2)
+  // scale(0.4)
+  // image(vid, 0, 0);
+  // pop()
   
 
   // circle(1500, 1700,40)
