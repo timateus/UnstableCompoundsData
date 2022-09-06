@@ -35,7 +35,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1920, 2160);
+  createCanvas(1500, 1700);
   
   imgMap.loadPixels();
   
@@ -68,7 +68,7 @@ const renderScreen = () => {
   renderWave(valsCos, 8);
   renderWave(valsCos1, 8);
   push()
-  translate(-0,0)
+  translate(-500,0)
   renderWaveParametric(vals, valsCos, 8);  
   pop()
   // renderWaveParametric(vals, valsCos);  
@@ -77,10 +77,10 @@ const renderScreen = () => {
 
 const renderTarget = () => {
   let x = map(
-    noise(frameCount * 0.002), 0, 1, 100, 700
+    noise(frameCount * 0.002), 0, 1, 400, width - 400
   );
   let y = map(
-    noise(frameCount * 0.001), 0, 1, 100, 700
+    noise(frameCount * 0.001), 0, 1, 400, height - 400
   );
   
   
@@ -109,12 +109,13 @@ const renderTarget = () => {
 }
 
 function draw() {
+  scale()
   noiseVal = map(noise(frameCount / 100),0, 1, -50, 50);
   
   background(0)
   push()
-  scale(1)
-  image(imgMap, 80, 400);
+  scale(0.8)
+  image(imgMap, 70, 450);
   pop()
   
   
@@ -150,6 +151,7 @@ function draw() {
   pop()
   
 
+  // circle(1500, 1700,40)
   
   // makie it blink  
   if(noise(round(frameCount / 5)) < 0.2) {
